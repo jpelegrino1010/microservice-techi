@@ -1,0 +1,20 @@
+server:
+  port: 8989
+
+spring:
+  application:
+    name: SERVICE-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: popular-service
+          uri: lb://SERVICE-POPULAR
+          predicates:
+            - Path=/popular/**
+
+        - id: reservas-service
+          uri: lb://SERVICE-RESERVAS
+          predicates:
+            - Path=/reservas/**
+
+
